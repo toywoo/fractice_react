@@ -3,34 +3,30 @@ import PropTypes from "prop-types";
 
 //{fav} = props.fav
 
-function Food({name, picture, rating}){
-  return (
-    <div>
-      <h1>I love {name}</h1>
-      <h3>{rating} / 5.0</h3>
-      <img src = {picture} alt ={name}/>
-    </div>
-  );
-}
+class App extends React.Component{
+  state = {
+    count : 0
+  } // put the date
 
-Food.propTypes={
-  name: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
-  rating: PropTypes.number
-};
-const foodLike = [ { rating :5, id: 1, name : "kimbap", image: "https://www.seriouseats.com/2020/01/20200122-gimbap-vicky-wasik-24.jpg" },
-                  {rating : 0, id: 2, name : "kimchi", image: "https://www.koreanbapsang.com/wp-content/uploads/2019/11/DSC_0831.jpg"  }];
+  add = () => {this.setState(current => ({count : current.count + 1}))} // this.state.count = 1 (x) because Auto render function call
+  minus = () => {this.setState(current => ({count : current.count - 1}))}//this.state.count + 1 (X) because performance problem
 
-function renderFood(dish){
-  console.log(dish);
-  return <Food name = {dish.name} rating = {dish.rating} picture ={dish.image}/>
-}
-function App() {
-  return (
-    <div>
-    {foodLike.map(renderFood)}
-    </div>
-  );
+  render(){
+    return(
+      <div>
+        <h1> {this.state.count}</h1>
+        <button onClick ={this.add}>Add</button> 
+        <button onClick={this.minus}>minus</button>
+      </div>
+    )
+  }
 }
 
 export default App;
+
+/*
+https://reacts.org/docs/react-component.html 
+component Life Cycle 
+Constructor() =>  render() => componentDidMount() => if change ex)click button up componentDidUpdate() => componentWillUnmount()
+
+*/
