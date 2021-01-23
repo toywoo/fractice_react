@@ -1,32 +1,47 @@
 import React from "react";
 import PropTypes from "prop-types";
+import axios from "axios";
+import Movie from "./Movie";
+import "./App.css";
 
 //{fav} = props.fav
 
 class App extends React.Component{
   state = {
-    count : 0
-  } // put the date
+    isLoading: true
+  };
 
-  add = () => {this.setState(current => ({count : current.count + 1}))} // this.state.count = 1 (x) because Auto render function call
-  minus = () => {this.setState(current => ({count : current.count - 1}))}//this.state.count + 1 (X) because performance problem
+  getMovies = async () => {
+    const {data: {data: {movies}}} =  await axios.get("https://yts.mx/api/v2/list_movies.json?sortbyrating");
+    this.setState({movies, isLoading: false});
+  }
+
+  componentDidMount(){
+    this.getMovies();
+  }
 
   render(){
-    return(
-      <div>
-        <h1> {this.state.count}</h1>
-        <button onClick ={this.add}>Add</button> 
-        <button onClick={this.minus}>minus</button>
-      </div>
+    const { isLoading, movies } = this.state;
+    return (
+      <section className ="container">
+        {isLoading ? (<div className = "loader"><span className ="loader__text">Loading...</span></div>) : 
+        (<div className = "movies"> 
+        {movies.map (movie => ( 
+        <Movie  
+        key = {movie.id} 
+        id = {movie.id} 
+        year = {movie.year} 
+        title = {movie.title} 
+        summary = {movie.summary} 
+        poster = {movie.medium_cover_image} 
+        genres = {movie.genres}
+        />
+        ))}
+        </div>)}
+      </section>
     )
   }
+
 }
 
 export default App;
-
-/*
-https://reacts.org/docs/react-component.html 
-component Life Cycle 
-Constructor() =>  render() => componentDidMount() => if change ex)click button up componentDidUpdate() => componentWillUnmount()
-
-*/
