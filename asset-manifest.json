@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/fractice_react/static/css/main.8462e188.chunk.css",
+    "main.js": "/fractice_react/static/js/main.6f3448ab.chunk.js",
+    "main.js.map": "/fractice_react/static/js/main.6f3448ab.chunk.js.map",
+    "runtime-main.js": "/fractice_react/static/js/runtime-main.f386ea93.js",
+    "runtime-main.js.map": "/fractice_react/static/js/runtime-main.f386ea93.js.map",
+    "static/js/2.625668b1.chunk.js": "/fractice_react/static/js/2.625668b1.chunk.js",
+    "static/js/2.625668b1.chunk.js.map": "/fractice_react/static/js/2.625668b1.chunk.js.map",
+    "index.html": "/fractice_react/index.html",
+    "static/css/main.8462e188.chunk.css.map": "/fractice_react/static/css/main.8462e188.chunk.css.map",
+    "static/js/2.625668b1.chunk.js.LICENSE.txt": "/fractice_react/static/js/2.625668b1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f386ea93.js",
+    "static/js/2.625668b1.chunk.js",
+    "static/css/main.8462e188.chunk.css",
+    "static/js/main.6f3448ab.chunk.js"
+  ]
+}
